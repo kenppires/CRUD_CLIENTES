@@ -1,3 +1,3 @@
-from bdados import banco_dados, buscar_registro
+from bdados import banco_dados, buscar_registro, formatar_registros
 
-#PARA IMPLEMENTAR.
+#IMPLEMENTAR FUNÇÃO.

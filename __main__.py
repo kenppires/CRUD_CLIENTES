@@ -1,6 +1,6 @@
-# from utils.create import criar_registro
+from utils.create import criar_registro
 from utils.read import ler_registro
-# from utils.update import atualizar_registro
+from utils.update import atualizar_registro
 # from utils.delete import deletar_registro
 from bdados import formatar_registros, campos_aceitos, mapa_campos
 

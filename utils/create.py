@@ -30,3 +30,29 @@ def criar_registro(tipo, identificador, telefone, email, nome=None, razao_social
         return "Tipo inválido. Use 'PF' ou 'PJ'."
     
     banco_dados[novo_id] = registro
+    
+    with open("bdados.py", "r", encoding="utf-8") as f:
+        conteudo = f.read()
+
+    # Converte o texto em estrutura Python para editar
+    inicio = conteudo.find("banco_dados = {")
+    if inicio == -1:
+        return "Erro: banco_dados não encontrado no arquivo bdados.py"
+
+    # Retira apenas o dicionário original
+    dicionario_str = conteudo[inicio + len("banco_dados = "):].split("\n\n", 1)[0].strip()
+
+    # Converte o texto para dicionário real
+    dados_existentes = ast.literal_eval(dicionario_str)
+
+    # Atualiza os dados
+    dados_existentes[novo_id] = registro
+
+    # Substitui o conteúdo do dicionário no arquivo
+    novo_conteudo = conteudo.replace(dicionario_str, str(dados_existentes))
+
+    # Salva de volta no bdados.py
+    with open("bdados.py", "w", encoding="utf-8") as f:
+        f.write(novo_conteudo)
+
+    return f"Registro {novo_id} criado com sucesso!"

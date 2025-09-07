@@ -1,3 +1,4 @@
+import ast
 from bdados import banco_dados, gerar_novo_id
 
 def criar_registro(tipo, identificador, telefone, email, nome=None, razao_social=None):

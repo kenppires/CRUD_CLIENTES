@@ -1,7 +1,7 @@
 from utils.create import criar_registro
 from utils.read import ler_registro
 from utils.update import atualizar_registro
-# from utils.delete import deletar_registro
+from utils.delete import deletar_registro
 from bdados import formatar_registros, campos_aceitos, mapa_campos
 
 # Campos permitidos por tipo de cliente
@@ -46,7 +46,7 @@ def menu():
                 if filtro.lower() not in map(lambda x: x.lower(), campos_aceitos()):
                     print(f"Campo '{filtro}' inválido.\nCampos aceitos: " + ", ".join(campos_aceitos()))
                     continue
-                valor = input("Digite o valor (busca parcial aceita) ou Enter para listar apenas registros com este campo: ").strip()
+                valor = input("Digite o valor (busca parcial aceita[exceto ID]) ou Enter para listar apenas registros com este campo: ").strip()
                 resultados = ler_registro(filtro, valor)
                 print(formatar_registros(resultados))
             else:

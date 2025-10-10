@@ -1,8 +1,11 @@
-from utils.create import criar_registro
+from utils.create import Cliente
+from utils.update import AtualizarCliente
 from utils.read import ler_registro
-from utils.update import atualizar_registro
 from utils.delete import deletar_registro
 from bdados import formatar_registros, campos_aceitos, mapa_campos
+
+novo_cliente = Cliente
+atualizar_cliente = AtualizarCliente
 
 # Campos permitidos por tipo de cliente
 campos_pf = ["Nome", "CPF", "Telefone", "Email"]
@@ -29,13 +32,13 @@ def menu():
                 cpf = input("CPF: ")
                 telefone = input("Telefone: ")
                 email = input("Email: ")
-                print(criar_registro("PF", cpf, telefone, email, nome=nome))
+                print(novo_cliente.criar_registro("PF", cpf, telefone, email, nome=nome))
             elif tipo == "PJ":
                 razao_social = input("Razão Social: ")
                 cnpj = input("CNPJ: ")
                 telefone = input("Telefone: ")
                 email = input("Email: ")
-                print(criar_registro("PJ", cnpj, telefone, email, razao_social=razao_social))
+                print(novo_cliente.criar_registro("PJ", cnpj, telefone, email, razao_social=razao_social))
             else:
                 print("Tipo inválido, escolha PF ou PJ.")
 
@@ -80,7 +83,7 @@ def menu():
                 print(f"Campo '{chave}' não pode ser atualizado para este tipo de cliente.\nPermitidos: {permitidos}")
                 continue
 
-            print(atualizar_registro(filtro, valor, **{campo: novo_valor}))
+            print(atualizar_cliente.atualizar_registro(filtro, valor, **{campo: novo_valor}))
 
         elif opcao == "4":
             mostrar_campos()

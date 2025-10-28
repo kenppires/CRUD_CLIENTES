@@ -5,7 +5,9 @@ def deletar_registro(filtro, valor):
     if not registros or isinstance(registros, str):
         return registros if isinstance(registros, str) else "Nenhum registro encontrado."
 
-    print("\n🔎 Registros encontrados:")
+    num_registros = len(registros)
+    print(f"\n{num_registros} registro(s) encontrado(s):")
+  
     print(formatar_registros(registros))
     confirm = input("Tem certeza que deseja deletar esses registros? (s/n): ").strip().lower()
 

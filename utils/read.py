@@ -6,7 +6,6 @@ def ler_registro(filtro=None, valor=None):
         if not campo:
             return f"Campo '{filtro}' inválido."
 
-        # Enter vazio → lista apenas registros que possuem o campo
         if not valor:
             registros = [r for r in banco_dados.values() if campo in r and r[campo]]
             return registros
